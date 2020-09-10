@@ -16,7 +16,7 @@ def __ctc_decoder_predictions_tensor(tensor, labels):
     prediction_cpu_tensor = tensor.long().cpu()
     # iterate over batch
     for ind in range(prediction_cpu_tensor.shape[0]):
-        prediction = prediction_cpu_tensor[ind].numpy().tolist()
+        prediction = prediction_cpu_tensor[ind].detach().numpy().tolist()
         # CTC decoding procedure
         decoded_prediction = []
         previous = len(labels)  # id of a blank symbol
